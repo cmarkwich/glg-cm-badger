@@ -2,7 +2,9 @@
   <template>
     <link rel="stylesheet" type="text/css" href="./glg-cm-badger.less">
     <span id="flag-container">
-      <template ref="flag-1" bind="{{}}"></template>
+      <template repeat="{{flag in flags}}">
+        <template ref="{{flag.name}}" bind="{{flag}}"></template>
+      </template>
     </span>
     <template id="flag-1">
       <icon warning></icon>

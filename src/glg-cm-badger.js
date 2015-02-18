@@ -8,10 +8,11 @@ Polymer('glg-cm-badger', {
   attached: function() {},
 
   domReady: function() {
-    var flag1 = document.querySelector('#flag-1');
-    console.log(flag1);
-    // var flag1 = this.$['flag-1'];
-    // flag1.model = {};
+    this.flags = [{
+      name: 'flag-1'
+    }, {
+      name: 'flag-1'
+    }];
   },
 
   detached: function() {},
