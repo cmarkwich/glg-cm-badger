@@ -1,3 +1,12 @@
+// Flag from epiquery/councilMember/profile/getFlags.mustache
+function normalizeFlag(flag) {
+  var templateName = flag.FLAG_NAME.toLowerCase()
+    .replace(/%?( ?- ?)|%| |\//gi, '-');
+  flag.templateName = 'flag-' + templateName;
+  console.log(flag);
+  return flag;
+}
+
 Polymer('glg-cm-badger', {
   created: function() {},
 
@@ -8,27 +17,13 @@ Polymer('glg-cm-badger', {
   attached: function() {},
 
   domReady: function() {
-    this.flags = [{
-      name: 'flag-1'
-    }, {
-      name: 'flag-1'
-    }];
   },
 
   detached: function() {},
 
   handleResponse: function(e, response) {
-    console.log(response);
+    // TODO: Handle errors.
+    this.flags = response.response.map(normalizeFlag);
   }
 
 });
-
-/*
-<core-ajax
-  auto
-  url="https://query.glgroup.com/councilMember/profile/getFlags.mustache"
-  params='{"councilMemberId":"239081"}'
-  handleAs="json"
-  withCredentials="true"
-  on-core-response="{{handleResponse}}"></core-ajax>
-*/
