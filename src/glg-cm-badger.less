@@ -3,3 +3,46 @@
 @import "../node_modules/ui-styles/typography";
 @import "../node_modules/ui-fonts/node_modules/ui-font-awesome/icons";
 @import "../node_modules/ui-fonts/node_modules/ui-font-awesome/font-awesome-icons";
+
+:host {
+  display: inline;
+  font-size: 16px;
+}
+
+.icon-container {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+}
+
+.orange {
+  color: orange;
+}
+
+.white {
+  color: white;
+}
+
+.green {
+  color: green;
+}
+
+.stack {
+  position: relative;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  line-height: 1em;
+
+  icon {
+    position: absolute;
+    width: 100%;
+    left: 0;
+
+    &.front {
+      text-align: center;
+      font-size: 0.875em;
+    }
+  }
+}

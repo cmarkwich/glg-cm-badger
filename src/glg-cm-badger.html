@@ -13,8 +13,21 @@
       handleAs="json"
       withCredentials="true"
       on-core-response="{{handleResponse}}"></core-ajax>
+
+    <!-- FLAGS -->
     <template id="flag-caution">
-      <icon warning></icon>
+      <span class="icon-container">
+        <icon warning class="orange" title="{{COMMENTS}}"></icon>
+      </span>
+    </template>
+
+    <template id="flag-full-consent">
+      <span class="icon-container">
+        <span class="stack">
+          <icon square class="green"></icon>
+          <icon arrow-right class="white front" title="{{COMMENTS}}"></icon>
+        </span>
+      </span>
     </template>
   </template>
   <script src="./glg-cm-badger.js"></script>
