@@ -1,0 +1,25 @@
+{
+  "name": "glg-cm-badger",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "polymer-serve ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Custom-Elements/glg-cm-badger.git"
+  },
+  "author": "David Hayes <drhayes@gmail.com> (http://drhayes.io/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Custom-Elements/glg-cm-badger/issues"
+  },
+  "homepage": "https://github.com/Custom-Elements/glg-cm-badger",
+  "dependencies": {
+    "polymer-serve": "git://github.com/custom-elements/polymer-serve#master",
+    "webcomponents": "git://github.com/custom-elements/webcomponentsjs#master",
+    "ui-fonts": "git://github.com/custom-elements/ui-fonts#master",
+    "ui-styles": "git://github.com/custom-elements/ui-styles#master"
+  }
+}
