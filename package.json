@@ -20,6 +20,7 @@
     "polymer-serve": "git://github.com/custom-elements/polymer-serve#master",
     "webcomponents": "git://github.com/custom-elements/webcomponentsjs#master",
     "ui-fonts": "git://github.com/custom-elements/ui-fonts#master",
-    "ui-styles": "git://github.com/custom-elements/ui-styles#master"
+    "ui-styles": "git://github.com/custom-elements/ui-styles#master",
+    "moment": "^2.9.0"
   }
 }
