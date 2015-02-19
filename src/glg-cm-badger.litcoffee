@@ -28,7 +28,9 @@ The flags come with a bunch of date columns that we enumerate here:
 Removes flags whose `ACTIVE_IND` is 0.
 
     filterInactive = (flags) ->
-      flags.filter (flag) -> flag.ACTIVE_IND != 0
+      flags.filter (flag) ->
+        console.log flag
+        flag.ACTIVE_IND != 0
 
 ## `processFlag`
 
@@ -53,8 +55,8 @@ fields' info.
         flag["#{field}_CALENDAR"] = flag[field].calendar()
       flag.tooltip = "#{flag.FLAG_NAME}"
       flag.tooltip += " - #{flag.COMMENTS}" if flag.COMMENTS
-      flag.tooltip += " - #{flag.GLG_CREATED_BY}" if flag.GLG_CREATED_BY
-      flag.tooltip += " - #{flag.CREATE_DATE_CALENDAR}" if flag.CREATE_DATE_RAW
+      flag.tooltip += " - #{flag.LAST_UPDATED_BY}" if flag.LAST_UPDATED_BY
+      flag.tooltip += " - #{flag.LAST_UPDATE_DATE_CALENDAR}" if flag.LAST_UPDATE_DATE_RAW
 
       console.log templateName, flag.ACTION, flag
       flag
