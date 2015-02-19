@@ -25,12 +25,10 @@ The flags come with a bunch of date columns that we enumerate here:
 
 ## `filterInactive`
 
-Removes flags whose `ACTIVE_IND` is 0.
+Removes flags where `ACTIVE_IND` is 0.
 
     filterInactive = (flags) ->
-      flags.filter (flag) ->
-        console.log flag
-        flag.ACTIVE_IND != 0
+      flags.filter (flag) -> flag.ACTIVE_IND != 0
 
 ## `processFlag`
 
@@ -79,5 +77,5 @@ Doesn't do much besides respond to the `core-ajax` call and process the flags.
 
       handleResponse: (e, response) ->
         #TODO: Handle errors.
-        flags = filterInactive(response.response)
-        @flags = flags.map(processFlag);
+        @flags = filterInactive(response.response)
+          .map(processFlag)

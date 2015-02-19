@@ -9,7 +9,7 @@
     <core-ajax
       auto
       url="https://query.glgroup.com/councilMember/profile/getFlags.mustache"
-      params='{"councilMemberId":"239081"}'
+      params='{"councilMemberId":"105354"}'
       handleAs="json"
       withCredentials="true"
       on-core-response="{{handleResponse}}"></core-ajax>
@@ -40,6 +40,18 @@
     <template id="premium-flag">
       <span class="premium" title="{{tooltip}}">
         <icon money></icon><span class="plus">+</span>
+      </span>
+    </template>
+
+    <template id="educator-flag">
+      <span class="label educator" title="{{tooltip}}">
+        Educator
+      </span>
+    </template>
+
+    <template id="practice-area-exclusive-flag">
+      <span class="label practice-area-exclusive" title="{{tooltip}}">
+        Exclusive
       </span>
     </template>
 
