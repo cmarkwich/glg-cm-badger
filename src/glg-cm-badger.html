@@ -15,25 +15,25 @@
       on-core-response="{{handleResponse}}"></core-ajax>
 
     <!-- FLAGS -->
-    <template id="flag-caution">
-      <span class="icon-container">
-        <icon warning class="orange" title="{{COMMENTS}}"></icon>
+    <template id="caution-flag">
+      <span class="icon-container caution-flag">
+        <icon warning title="{{COMMENTS}}"></icon>
       </span>
     </template>
 
-    <template id="flag-full-consent">
-      <span class="icon-container">
+    <template id="full-consent-flag">
+      <span class="icon-container full-consent-flag">
         <span class="stack">
-          <icon square class="green"></icon>
-          <icon arrow-right class="white front" title="{{COMMENTS}}"></icon>
+          <icon square></icon>
+          <icon arrow-right class="front" title="{{COMMENTS}}"></icon>
         </span>
       </span>
     </template>
 
-    <template id="flag-glg-scholar-top-20">
-      <span class="red-bg white dib scholar">
+    <template id="glg-scholar-top-20-flag">
+      <span class="scholar">
         Scholar
-        <span class="white-bg left-margin dib black">20%</span>
+        <span class="number">20%</span>
       </span>
     </template>
 

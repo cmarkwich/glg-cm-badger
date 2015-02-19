@@ -3,7 +3,7 @@ function normalizeFlag(flag) {
   var templateName = flag.FLAG_NAME.toLowerCase()
     .replace(/%?( ?- ?)|%| |\//gi, '-')
     .replace(/-$/gi, '');
-  flag.templateName = 'flag-' + templateName;
+  flag.templateName = templateName + '-flag';
   console.log(templateName);
   return flag;
 }
