@@ -17,7 +17,7 @@
     <!-- FLAGS -->
     <template id="caution-flag">
       <span class="icon-container caution-flag">
-        <icon warning title="{{COMMENTS}}"></icon>
+        <icon warning title="{{tooltip}}"></icon>
       </span>
     </template>
 
@@ -25,15 +25,21 @@
       <span class="icon-container full-consent-flag">
         <span class="stack">
           <icon square></icon>
-          <icon arrow-right class="front" title="{{COMMENTS}} - {{GLG_CREATED_BY}} - {{ACTION_DATE_CALENDAR}}"></icon>
+          <icon arrow-right class="front" title="{{tooltip}}"></icon>
         </span>
       </span>
     </template>
 
     <template id="glg-scholar-top-20-flag">
-      <span class="scholar" title="{{GLG_CREATED_BY}} - {{ACTION_DATE_CALENDAR}}">
+      <span class="scholar" title="{{tooltip}}">
         Scholar
         <span class="number">20%</span>
+      </span>
+    </template>
+
+    <template id="premium-flag">
+      <span class="premium" title="{{tooltip}}">
+        <icon money></icon><span class="plus">+</span>
       </span>
     </template>
 

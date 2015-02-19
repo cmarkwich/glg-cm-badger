@@ -23,6 +23,13 @@ The flags come with a bunch of date columns that we enumerate here:
       'LAST_UPDATE_DATE'
     ]
 
+## `filterInactive`
+
+Removes flags whose `ACTIVE_IND` is 0.
+
+    filterInactive = (flags) ->
+      flags.filter (flag) -> flag.ACTIVE_IND != 0
+
 ## `processFlag`
 
 Those flags need more useful information on them for our purposes. That's
@@ -31,6 +38,9 @@ what this function does.
 It sets a property named `templateName` on each flag. It's the name of the
 flag with all the non-alphanumeric characters converted to hyphens. It also
 changes each date field from above to a more useful `moment` object.
+
+It also sets the `tooltip` field to a sensible combination of other
+fields' info.
 
     processFlag = (flag) ->
       templateName = flag.FLAG_NAME?.toLowerCase()
@@ -41,7 +51,12 @@ changes each date field from above to a more useful `moment` object.
         flag["#{field}_RAW"] = flag[field]
         flag[field] = moment(flag[field])
         flag["#{field}_CALENDAR"] = flag[field].calendar()
-      console.log templateName, flag
+      flag.tooltip = "#{flag.FLAG_NAME}"
+      flag.tooltip += " - #{flag.COMMENTS}" if flag.COMMENTS
+      flag.tooltip += " - #{flag.GLG_CREATED_BY}" if flag.GLG_CREATED_BY
+      flag.tooltip += " - #{flag.CREATE_DATE_CALENDAR}" if flag.CREATE_DATE_RAW
+
+      console.log templateName, flag.ACTION, flag
       flag
 
 # The `glg-cm-badger` Element
@@ -62,4 +77,5 @@ Doesn't do much besides respond to the `core-ajax` call and process the flags.
 
       handleResponse: (e, response) ->
         #TODO: Handle errors.
-        @flags = response.response.map(processFlag);
+        flags = filterInactive(response.response)
+        @flags = flags.map(processFlag);
