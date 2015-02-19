@@ -40,6 +40,7 @@ changes each date field from above to a more useful `moment` object.
       dates.forEach (field) ->
         flag["#{field}_RAW"] = flag[field]
         flag[field] = moment(flag[field])
+        flag["#{field}_CALENDAR"] = flag[field].calendar()
       console.log templateName, flag
       flag
 
