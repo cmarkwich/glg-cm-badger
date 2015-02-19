@@ -4,6 +4,10 @@
 @import "../node_modules/ui-fonts/node_modules/ui-font-awesome/icons";
 @import "../node_modules/ui-fonts/node_modules/ui-font-awesome/font-awesome-icons";
 
+@innerPadding: 0.166em;
+@boxySideMargin: 0.1em;
+@boxyFontSize: 0.75em;
+
 :host {
   display: inline;
   font-size: 16px;
@@ -49,24 +53,26 @@
 }
 
 .label {
-  font-size: 0.75em;
+  display: inline-block;
+  margin: 0 @boxySideMargin;
+  padding: @innerPadding;
+  font-size: @boxyFontSize;
+  line-height: 1em;
   font-weight: bold;
   border-radius: 0.2em;
-  padding: 0.1em;
   text-align: center;
-  vertical-align: bottom;
 }
 
-.scholar {
+.num-container {
   display: inline-block;
-  font-size: 0.75em;
+  margin: 0 @boxySideMargin;
+  padding: @innerPadding;
+  font-size: @boxyFontSize;
   line-height: 1em;
-  width: 7em;
   text-align: center;
   background-color: #b94a48;
   color: white;
   font-weight: bold;
-  padding: 0.166em;
   border-radius: 0.25em;
 
   .number {
@@ -77,6 +83,10 @@
     border-radius: 0 0.25em 0.25em 0;
     color: #000;
   }
+}
+
+.leader {
+  width: 6em;
 }
 
 .premium {
@@ -95,6 +105,7 @@
 }
 
 .practice-area-exclusive {
+  width: 4.8em;
   background-color: #00bdbd;
   color: #fff;
 }
