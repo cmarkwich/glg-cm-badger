@@ -4,7 +4,7 @@ function normalizeFlag(flag) {
     .replace(/%?( ?- ?)|%| |\//gi, '-')
     .replace(/-$/gi, '');
   flag.templateName = templateName + '-flag';
-  console.log(templateName);
+  console.log(templateName, flag);
   return flag;
 }
 
