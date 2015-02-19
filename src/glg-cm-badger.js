@@ -1,9 +1,10 @@
 // Flag from epiquery/councilMember/profile/getFlags.mustache
 function normalizeFlag(flag) {
   var templateName = flag.FLAG_NAME.toLowerCase()
-    .replace(/%?( ?- ?)|%| |\//gi, '-');
+    .replace(/%?( ?- ?)|%| |\//gi, '-')
+    .replace(/-$/gi, '');
   flag.templateName = 'flag-' + templateName;
-  console.log(flag);
+  console.log(templateName);
   return flag;
 }
 
