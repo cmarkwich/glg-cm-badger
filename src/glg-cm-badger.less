@@ -4,6 +4,11 @@
 @import "../node_modules/ui-fonts/node_modules/ui-font-awesome/icons";
 @import "../node_modules/ui-fonts/node_modules/ui-font-awesome/font-awesome-icons";
 
+// Need flipped/rotated declarations; thus need prefix and mixins.
+@fa-css-prefix: fa;
+@import "../node_modules/ui-fonts/node_modules/ui-font-awesome/node_modules/font-awesome/less/mixins";
+@import "../node_modules/ui-fonts/node_modules/ui-font-awesome/node_modules/font-awesome/less/rotated-flipped";
+
 @innerPadding: 0.166em;
 @boxySideMargin: 0.1em;
 @boxyFontSize: 0.75em;
@@ -103,8 +108,20 @@
   color: #000;
 }
 
-.practice-area-exclusive {
-  width: 4.8em;
-  background-color: #00bdbd;
-  color: #fff;
+// Whoops, wrong flag styling.
+// .practice-area-exclusive {
+//   width: 4.8em;
+//   background-color: #00bdbd;
+//   color: #fff;
+// }
+// <span class="label practice-area-exclusive" title="{{tooltip}}">
+//   Exclusive
+// </span>
+
+.practice-area-exclusive-flag {
+  color: orange;
+
+  icon[play] {
+    color: #fff;
+  }
 }

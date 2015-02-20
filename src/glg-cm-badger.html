@@ -16,16 +16,16 @@
 
     <!-- FLAGS -->
     <template id="caution-flag">
-      <span class="icon-container caution-flag">
-        <icon warning title="{{tooltip}}"></icon>
+      <span class="icon-container caution-flag" title="{{tooltip}}">
+        <icon warning></icon>
       </span>
     </template>
 
     <template id="full-consent-flag">
-      <span class="icon-container full-consent-flag">
+      <span class="icon-container full-consent-flag" title="{{tooltip}}">
         <span class="stack">
           <icon square></icon>
-          <icon arrow-right class="front" title="{{tooltip}}"></icon>
+          <icon arrow-right class="front"></icon>
         </span>
       </span>
     </template>
@@ -38,7 +38,7 @@
     </template>
 
     <template id="glg-leader-top-5-councils-exclusive-flag">
-      <span class="num-container top-5">
+      <span class="num-container top-5" title="{{tooltip}}">
         Leader
         <span class="number">5%</span>
       </span>
@@ -57,8 +57,11 @@
     </template>
 
     <template id="practice-area-exclusive-flag">
-      <span class="label practice-area-exclusive" title="{{tooltip}}">
-        Exclusive
+      <span class="icon-container practice-area-exclusive-flag" title="{{comment}}">
+        <span class="stack">
+          <icon square></icon>
+          <icon play class="front fa-rotate-270"></icon>
+        </span>
       </span>
     </template>
 

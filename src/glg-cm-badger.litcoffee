@@ -76,6 +76,7 @@ Doesn't do much besides respond to the `core-ajax` call and process the flags.
       detached: ->
 
       handleResponse: (e, response) ->
+        flags = response?.response or []
         #TODO: Handle errors.
-        @flags = filterInactive(response.response)
+        @flags = filterInactive(flags)
           .map(processFlag)
