@@ -9,7 +9,7 @@
     <core-ajax
       auto
       url="https://query.glgroup.com/councilMember/profile/getFlags.mustache"
-      params='{"councilMemberId":"575713"}'
+      params='{"councilMemberId":"105354"}'
       handleAs="json"
       withCredentials="true"
       on-core-response="{{handleResponse}}"></core-ajax>
@@ -91,6 +91,12 @@
           <icon square></icon>
           <icon circle-o class="front"></icon>
         </span>
+      </span>
+    </template>
+
+    <template id="exclusive-flag">
+      <span class="label exclusive" title="{{tooltip}}">
+        Exclusive
       </span>
     </template>
 

@@ -28,8 +28,20 @@ The flags come with a bunch of date columns that we enumerate here:
 Removes flags where `ACTIVE_IND` is 0.
 
     filterInactive = (flags) ->
-      # flags
       flags.filter (flag) -> flag.ACTIVE_IND != 0
+
+## `addExclusive`
+
+If the CM has any exclusive flags, tack on a special flag highlighting that.
+
+    anyExclusive = (flags) ->
+      # Right now, only "GLG Leader - Top 5% - Councils Exclusive", type 19.
+      exclusive = flags.some (flag) -> flag.COUNCIL_MEMBER_FLAG_ID == 19
+      if exclusive
+        flags.push flag =
+          tooltip: 'Exclusivity Through Leadership Agreement'
+          templateName: 'exclusive-flag'
+      flags
 
 ## `processFlag`
 
@@ -78,6 +90,8 @@ Doesn't do much besides respond to the `core-ajax` call and process the flags.
 
       handleResponse: (e, response) ->
         flags = response?.response or []
-        #TODO: Handle errors.
+        # TODO: Handle errors.
+        # TODO: Sort by priority.
         @flags = filterInactive(flags)
           .map(processFlag)
+        anyExclusive(@flags)
