@@ -9,7 +9,7 @@
     <core-ajax
       auto
       url="https://query.glgroup.com/councilMember/profile/getFlags.mustache"
-      params='{"councilMemberId":"105354"}'
+      params='{"councilMemberId":"575713"}'
       handleAs="json"
       withCredentials="true"
       on-core-response="{{handleResponse}}"></core-ajax>
@@ -74,14 +74,23 @@
     </template>
 
     <template id="acc-flag">
-      <span class="label acc">
+      <span class="label acc" title="{{tooltip}}">
         AC
       </span>
     </template>
 
     <template id="data-bug-flag">
-      <span class="icon-container data-bug">
+      <span class="icon-container data-bug" title="{{tooltip}}">
         <icon bug></icon>
+      </span>
+    </template>
+
+    <template id="on-hold-flag">
+      <span class="icon-container on-hold" title="{{tooltip}}">
+        <span class="stack">
+          <icon square></icon>
+          <icon circle-o class="front"></icon>
+        </span>
       </span>
     </template>
 
