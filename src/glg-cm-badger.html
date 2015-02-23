@@ -9,7 +9,7 @@
     <core-ajax
       auto
       url="https://query.glgroup.com/councilMember/profile/getFlags.mustache"
-      params='{"councilMemberId":"164783"}'
+      params='{"councilMemberId":"587610"}'
       handleAs="json"
       withCredentials="true"
       on-core-response="{{handleResponse}}"></core-ajax>
@@ -121,6 +121,12 @@
     <template id="international-other-flag">
       <span class="label international-other" title="{{tooltip}}">
         I
+      </span>
+    </template>
+
+    <template id="key-executive-flag">
+      <span class="label key-executive" title="{{tooltip}}">
+        Key Executive
       </span>
     </template>
 
