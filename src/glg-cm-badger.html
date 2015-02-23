@@ -9,7 +9,7 @@
     <core-ajax
       auto
       url="https://query.glgroup.com/councilMember/profile/getFlags.mustache"
-      params='{"councilMemberId":"164782"}'
+      params='{"councilMemberId":"164783"}'
       handleAs="json"
       withCredentials="true"
       on-core-response="{{handleResponse}}"></core-ajax>
@@ -115,6 +115,12 @@
     <template id="asia-flag">
       <span class="label asia" title="{{tooltip}}">
         As
+      </span>
+    </template>
+
+    <template id="international-other-flag">
+      <span class="label international-other" title="{{tooltip}}">
+        I
       </span>
     </template>
 
