@@ -9,7 +9,7 @@
     <core-ajax
       auto
       url="https://query.glgroup.com/councilMember/profile/getFlags.mustache"
-      params='{"councilMemberId":"164790"}'
+      params='{"councilMemberId":"164791"}'
       handleAs="json"
       withCredentials="true"
       on-core-response="{{handleResponse}}"></core-ajax>
@@ -145,6 +145,12 @@
     <template id="glg-do-not-contact-flag">
       <span class="label glg-dnc" title="{{tooltip}}">
         G
+      </span>
+    </template>
+
+    <template id="do-not-contact-flag">
+      <span class="label glg-dnc" title="{{tooltip}}">
+        &nbsp;
       </span>
     </template>
 
