@@ -1,4 +1,4 @@
-<polymer-element name="glg-cm-badger">
+<polymer-element name="glg-cm-badger" attributes="cmId">
   <template>
     <link rel="stylesheet" type="text/css" href="./glg-cm-badger.less">
     <span id="flag-container">
@@ -9,7 +9,7 @@
     <core-ajax
       auto
       url="https://query.glgroup.com/councilMember/profile/getFlags.mustache"
-      params='{"councilMemberId":"204111"}'
+      params='{"councilMemberId":{{cmId}}}'
       handleAs="json"
       withCredentials="true"
       on-core-response="{{handleResponse}}"></core-ajax>

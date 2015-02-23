@@ -28,7 +28,6 @@ The flags come with a bunch of date columns that we enumerate here:
 Removes flags where `ACTIVE_IND` is 0.
 
     filterInactive = (flags) ->
-      #flags
       flags.filter (flag) -> flag.ACTIVE_IND != 0
 
 ## `addExclusive`
@@ -70,7 +69,8 @@ fields' info.
       flag.tooltip += " - #{flag.LAST_UPDATED_BY}" if flag.LAST_UPDATED_BY
       flag.tooltip += " - #{flag.LAST_UPDATE_DATE_CALENDAR}" if flag.LAST_UPDATE_DATE_RAW
 
-      console.log templateName, flag.ACTION, flag
+      # Uncomment the following to enumerate current flags and template names.
+      # console.log templateName, flag.ACTION, flag
       flag
 
 # The `glg-cm-badger` Element
