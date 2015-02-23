@@ -28,6 +28,7 @@ The flags come with a bunch of date columns that we enumerate here:
 Removes flags where `ACTIVE_IND` is 0.
 
     filterInactive = (flags) ->
+      #flags
       flags.filter (flag) -> flag.ACTIVE_IND != 0
 
 ## `addExclusive`
