@@ -9,7 +9,7 @@
     <core-ajax
       auto
       url="https://query.glgroup.com/councilMember/profile/getFlags.mustache"
-      params='{"councilMemberId":"157367"}'
+      params='{"councilMemberId":"164809"}'
       handleAs="json"
       withCredentials="true"
       on-core-response="{{handleResponse}}"></core-ajax>
@@ -101,8 +101,14 @@
     </template>
 
     <template id="first-access-flag">
-      <span class="label first-access">
+      <span class="label first-access" title="{{tooltip}}">
         First Access
+      </span>
+    </template>
+
+    <template id="europe-flag">
+      <span class="label europe" title="{{tooltip}}">
+        Eu
       </span>
     </template>
 
