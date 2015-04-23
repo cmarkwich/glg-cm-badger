@@ -21,6 +21,7 @@
     "webcomponents": "git://github.com/custom-elements/webcomponentsjs#master",
     "ui-fonts": "^0.0.1",
     "ui-styles": "git://github.com/custom-elements/ui-styles#master",
-    "moment": "^2.9.0"
+    "moment": "^2.9.0",
+    "core-ajax-npm": "git://github.com/custom-elements/core-ajax-npm"
   }
 }
