@@ -18,7 +18,6 @@
   "homepage": "https://github.com/Custom-Elements/glg-cm-badger",
   "dependencies": {
     "polymer-serve": "^0.0.30",
-    "webcomponents": "git://github.com/custom-elements/webcomponentsjs#master",
     "ui-fonts": "^0.0.1",
     "ui-styles": "git://github.com/custom-elements/ui-styles#master",
     "moment": "^2.9.0",
