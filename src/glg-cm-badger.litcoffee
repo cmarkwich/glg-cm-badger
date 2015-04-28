@@ -81,7 +81,6 @@ Doesn't do much besides respond to the `core-ajax` call and process the flags.
       created: ->
 
       ready: ->
-        console.log('ready')
 
       attached: ->
 
@@ -89,10 +88,17 @@ Doesn't do much besides respond to the `core-ajax` call and process the flags.
 
       detached: ->
 
-      handleResponse: (e, response) ->
+      handleBadgeResponse: (e, response) ->
         flags = response?.response or []
         # TODO: Handle errors.
         # TODO: Sort by priority.
         @flags = filterInactive(flags)
           .map(processFlag)
         anyExclusive(@flags)
+
+      handleFeedbackResponse: (e, response) ->
+        @feedback = response?.response?[0] or {}
+        console.log @feedback
+
+      percentage: (value) ->
+        "#{Math.floor(value * 100)}%"

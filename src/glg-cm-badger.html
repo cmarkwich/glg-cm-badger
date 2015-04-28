@@ -7,13 +7,25 @@
         <template ref="{{flag.templateName}}" bind="{{flag}}"></template>
       </template>
     </span>
+    <span id="feedback-container">
+      <template if="{{feedback.YES}}">
+        <icon thumbs-o-up></icon><span>{{feedback.YES / (feedback.YES + feedback.NO) | percentage}} ({{feedback.YES}}/{{feedback.YES + feedback.NO}})
+      </template>
+    </span>
     <core-ajax
       auto
       url="https://services.glgresearch.com/epiquery/councilMember/profile/getFlags.mustache"
       params='{"councilMemberId":{{cmId}}}'
       handleAs="json"
       withCredentials="true"
-      on-core-response="{{handleResponse}}"></core-ajax>
+      on-core-response="{{handleBadgeResponse}}"></core-ajax>
+    <core-ajax
+      auto
+      url="https://services.glgresearch.com/epiquery/feedback/getCouncilMemberFeedbackSummary.mustache"
+      params='{"councilMemberId":{{cmId}}}'
+      handleAs="json"
+      withCredentials="true"
+      on-core-response="{{handleFeedbackResponse}}"></core-ajax>
 
     <!-- FLAGS -->
     <template id="caution-flag">
