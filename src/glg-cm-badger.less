@@ -13,7 +13,12 @@
 @boxySideMargin: 0.1em;
 
 :host {
-  display: inline;
+  display: inline-flex;
+  flex-wrap: norap;
+  align-items: center;
+}
+
+#flag-container {
 }
 
 .icon-container {
@@ -26,36 +31,14 @@
 }
 
 .full-consent-flag {
-  color: green;
+  background-color: green;
 
   .front {
     color: white;
   }
 }
 
-.stack {
-  position: relative;
-  display: inline-block;
-  vertical-align: middle;
-  width: 1em;
-  height: 1.1em;
-  line-height: 1em;
-
-  icon {
-    position: absolute;
-    width: 100%;
-    left: 0;
-
-    &.front {
-      text-align: center;
-      font-size: 75%;
-      line-height: 1.4;
-    }
-  }
-}
-
 .label {
-  display: inline-block;
   margin: 0 @boxySideMargin;
   padding: @innerPadding;
   font-size: 75%;
@@ -66,6 +49,10 @@
   min-width: 1em;
   word-wrap: suppress;
   white-space: nowrap;
+  min-height: 1.1em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .num-container {
@@ -116,12 +103,9 @@
 }
 
 .practice-area-exclusive {
-  color: orange;
-
-  icon[play] {
-    color: #fff;
+  background-color: @orange;
+  color: @white;
   }
-}
 
 .acc, .europe, .asia, .international-other, .key-executive, .lera {
   background-color: royalblue;

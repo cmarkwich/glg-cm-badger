@@ -2,16 +2,12 @@
 <polymer-element name="glg-cm-badger" attributes="cmId">
   <template>
     <link rel="stylesheet" type="text/css" href="./glg-cm-badger.less">
-    <span id="flag-container">
-      <template repeat="{{flag in flags}}">
-        <template ref="{{flag.templateName}}" bind="{{flag}}"></template>
-      </template>
-    </span>
-    <span id="feedback-container">
-      <template if="{{feedback.YES}}">
-        <icon thumbs-o-up></icon><span>{{feedback.YES / (feedback.YES + feedback.NO) | percentage}} ({{feedback.YES}}/{{feedback.YES + feedback.NO}})
-      </template>
-    </span>
+    <template repeat="{{flag in flags}}">
+      <template ref="{{flag.templateName}}" bind="{{flag}}"></template>
+    </template>
+    <template if="{{feedback.YES}}">
+      <icon thumbs-o-up></icon><span>{{feedback.YES / (feedback.YES + feedback.NO) | percentage}} ({{feedback.YES}}/{{feedback.YES + feedback.NO}})
+    </template>
     <core-ajax
       auto
       url="https://services.glgresearch.com/epiquery/councilMember/profile/getFlags.mustache"
@@ -35,11 +31,8 @@
     </template>
 
     <template id="full-consent-flag">
-      <span class="icon-container full-consent-flag" title="{{tooltip}}">
-        <span class="stack">
-          <icon square></icon>
-          <icon arrow-right class="front"></icon>
-        </span>
+      <span class="icon-container full-consent-flag label" title="{{tooltip}}">
+        <icon arrow-right class="front"></icon>
       </span>
     </template>
 
@@ -70,11 +63,8 @@
     </template>
 
     <template id="practice-area-exclusive-flag">
-      <span class="icon-container practice-area-exclusive" title="{{tooltip}}">
-        <span class="stack">
-          <icon square></icon>
-          <icon play class="front fa-rotate-270"></icon>
-        </span>
+      <span class="icon-container practice-area-exclusive label" title="{{tooltip}}">
+        <icon play class="front fa-rotate-270"></icon>
       </span>
     </template>
 
