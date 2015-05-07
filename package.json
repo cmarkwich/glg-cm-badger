@@ -1,6 +1,6 @@
 {
   "name": "glg-cm-badger",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -18,8 +18,8 @@
   "homepage": "https://github.com/Custom-Elements/glg-cm-badger",
   "dependencies": {
     "polymer-serve": "^0.0.30",
-    "ui-fonts": "git://github.com/custom-elements/ui-fonts#master",
-    "ui-styles": "git://github.com/custom-elements/ui-styles#master",
+    "ui-fonts": "^0.0.2",
+    "ui-styles": "^0.0.0",
     "moment": "^2.9.0",
     "core-ajax-npm": "git://github.com/custom-elements/core-ajax-npm"
   }
