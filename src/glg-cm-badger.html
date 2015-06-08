@@ -6,7 +6,13 @@
       <template ref="{{flag.templateName}}" bind="{{flag}}"></template>
     </template>
     <template if="{{feedback.YES}}">
-      <icon thumbs-o-up></icon><span>{{feedback.YES / (feedback.YES + feedback.NO) | percentage}} ({{feedback.YES}}/{{feedback.YES + feedback.NO}})
+      <span class="icon-container feedback">
+        <icon thumbs-o-up></icon>
+        <span>{{feedback.YES / (feedback.YES + feedback.NO) | percentage}} ({{feedback.YES}}/{{feedback.YES + feedback.NO}})</span>
+      </span>
+    </template>
+    <template if="{{lobbyist}}">
+      <span class="lobbyist label">Lobbyist</span>
     </template>
     <core-ajax
       auto
@@ -22,6 +28,13 @@
       handleAs="json"
       withCredentials="true"
       on-core-response="{{handleFeedbackResponse}}"></core-ajax>
+    <core-ajax
+      auto
+      url="https://services.glgresearch.com/epiquery/councilMember/getLobbyist.mustache"
+      params='{"cmId":{{cmId}}}'
+      handleAs="json"
+      withCredentials="true"
+      on-core-response="{{handleLobbyistResponse}}"></core-ajax>
 
     <!-- FLAGS -->
     <template id="caution-flag">

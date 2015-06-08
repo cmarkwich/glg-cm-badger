@@ -98,7 +98,9 @@ Doesn't do much besides respond to the `core-ajax` call and process the flags.
 
       handleFeedbackResponse: (e, response) ->
         @feedback = response?.response?[0] or {}
-        console.log @feedback
+
+      handleLobbyistResponse: (e, response) ->
+        @lobbyist = response?.response?[0]?.lobbyistInd
 
       percentage: (value) ->
         "#{Math.floor(value * 100)}%"
