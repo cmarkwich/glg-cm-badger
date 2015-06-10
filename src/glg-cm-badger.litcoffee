@@ -1,18 +1,35 @@
 # Overview
 
-Get the massive list of flags for a user from the `core-ajax` element in the
-HTML for the element. Clean up the flags once we have them. Stick the flags
-on the element instance so the template for each flag can be rendered.
+Get the massive list of flags for a CM. Clean up the flags once we have them.
+Stick the flags on the element instance so the tempalte for each flag can
+be rendered.
 
 # Libraries
 
-We're gonna need some help parsing dates and such:
+We're gonna need some help parsing dates and getting data and stuff:
 
     moment = require('moment')
+    reduce = require('lodash.reduce')
 
 # Utility
 
-We get our flags from `councilMember/profile/getFlags.mustache` on epiquery.
+## `reduceEpistreamResponse`
+
+The response object from epistream is a flattened series of events. We mostly care about
+the row events, but we're on the lookout for error events as well.
+
+    reduceEpistreamResponse = (response) ->
+      events = response?.response?.events
+      accumulateRows = (list, e) ->
+        throw new Error(e) if e.message is 'error'
+        return if e.message is not 'row'
+        list.push e.columns if e.columns
+        list
+      reduce events, accumulateRows, []
+
+## `dates`
+
+We get our flags from `councilMember/profile/getFlagsActive.mustache` on epiquery.
 The flags come with a bunch of date columns that we enumerate here:
 
     dates = [
@@ -28,6 +45,7 @@ The flags come with a bunch of date columns that we enumerate here:
 Removes flags where `ACTIVE_IND` is 0.
 
     filterInactive = (flags) ->
+      return if not flags
       flags.filter (flag) -> flag.ACTIVE_IND != 0
 
 ## `addExclusive`
@@ -89,7 +107,7 @@ Doesn't do much besides respond to the `core-ajax` call and process the flags.
       detached: ->
 
       handleBadgeResponse: (e, response) ->
-        flags = response?.response or []
+        flags = reduceEpistreamResponse response
         # TODO: Handle errors.
         # TODO: Sort by priority.
         @flags = filterInactive(flags)
@@ -97,10 +115,12 @@ Doesn't do much besides respond to the `core-ajax` call and process the flags.
         anyExclusive(@flags)
 
       handleFeedbackResponse: (e, response) ->
-        @feedback = response?.response?[0] or {}
+        list = reduceEpistreamResponse response
+        @feedback = list[0]
 
       handleLobbyistResponse: (e, response) ->
-        @lobbyist = response?.response?[0]?.lobbyistInd
+        list = reduceEpistreamResponse response
+        @lobbyist = list[0]?.lobbyistInd
 
       percentage: (value) ->
         "#{Math.floor(value * 100)}%"

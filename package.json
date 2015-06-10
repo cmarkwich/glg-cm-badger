@@ -17,10 +17,11 @@
   },
   "homepage": "https://github.com/Custom-Elements/glg-cm-badger",
   "dependencies": {
+    "core-ajax-npm": "git://github.com/custom-elements/core-ajax-npm",
+    "lodash.reduce": "^3.1.2",
+    "moment": "^2.9.0",
     "polymer-serve": "^0.0.30",
     "ui-fonts": "git://github.com/custom-elements/ui-fonts#master",
-    "ui-styles": "git://github.com/custom-elements/ui-styles#master",
-    "moment": "^2.9.0",
-    "core-ajax-npm": "git://github.com/custom-elements/core-ajax-npm"
+    "ui-styles": "git://github.com/custom-elements/ui-styles#master"
   }
 }

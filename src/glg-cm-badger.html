@@ -16,22 +16,22 @@
     </template>
     <core-ajax
       auto
-      url="https://services.glgresearch.com/epiquery/councilMember/profile/getFlags.mustache"
+      url="https://services.glgresearch.com/repistream/79b6df0b-7665-4ae8-b61b-73d23ec04b3f/west_lsr_o/councilMember/profile/getFlagsActive.mustache"
       params='{"councilMemberId":{{cmId}}}'
       handleAs="json"
       withCredentials="true"
       on-core-response="{{handleBadgeResponse}}"></core-ajax>
     <core-ajax
       auto
-      url="https://services.glgresearch.com/epiquery/feedback/getCouncilMemberFeedbackSummary.mustache"
+      url="https://services.glgresearch.com/repistream/79b6df0b-7665-4ae8-b61b-73d23ec04b3f/west_lsr_o/feedback/getCouncilMemberFeedbackSummary.mustache"
       params='{"councilMemberId":{{cmId}}}'
       handleAs="json"
       withCredentials="true"
       on-core-response="{{handleFeedbackResponse}}"></core-ajax>
     <core-ajax
       auto
-      url="https://services.glgresearch.com/epiquery/councilMember/getLobbyist.mustache"
-      params='{"cmId":{{cmId}}}'
+      url="https://services.glgresearch.com/repistream/79b6df0b-7665-4ae8-b61b-73d23ec04b3f/west_lsr_o/councilMember/getLobbyist.mustache"
+      params='{"councilMemberId":{{cmId}}}'
       handleAs="json"
       withCredentials="true"
       on-core-response="{{handleLobbyistResponse}}"></core-ajax>
