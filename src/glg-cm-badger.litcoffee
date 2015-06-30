@@ -30,7 +30,8 @@ the row events, but we're on the lookout for error events as well.
 ## `dates`
 
 We get our flags from `councilMember/profile/getFlagsActive.mustache` on epiquery.
-The flags come with a bunch of date columns that we enumerate here:
+The flags come with a bunch of date columns that we enumerate here so that we can
+wrap them in a more useful `moment` object:
 
     dates = [
       'ACTION_DATE'
