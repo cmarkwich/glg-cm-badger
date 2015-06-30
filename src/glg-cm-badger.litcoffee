@@ -119,9 +119,10 @@ Doesn't do much besides respond to the `core-ajax` call and process the flags.
         list = reduceEpistreamResponse response
         @feedback = list[0]
 
-      handleLobbyistResponse: (e, response) ->
+      handleProfileInfoResponse: (e, response) ->
         list = reduceEpistreamResponse response
         @lobbyist = list[0]?.lobbyistInd
+        @publicOfficial = list[0]?.publicOfficialInd
 
       percentage: (value) ->
         "#{Math.floor(value * 100)}%"

@@ -14,6 +14,10 @@
     <template if="{{lobbyist}}">
       <span class="lobbyist label">Lobbyist</span>
     </template>
+    <template if="{{publicOfficial}}">
+      <span class="label public-official">Public Official</span>
+    </template>
+
     <core-ajax
       auto
       url="https://services.glgresearch.com/repistream/79b6df0b-7665-4ae8-b61b-73d23ec04b3f/west_lsr_o/councilMember/profile/getFlagsActive.mustache"
@@ -30,11 +34,11 @@
       on-core-response="{{handleFeedbackResponse}}"></core-ajax>
     <core-ajax
       auto
-      url="https://services.glgresearch.com/repistream/79b6df0b-7665-4ae8-b61b-73d23ec04b3f/west_lsr_o/councilMember/getLobbyist.mustache"
+      url="https://services.glgresearch.com/repistream/79b6df0b-7665-4ae8-b61b-73d23ec04b3f/west_lsr_o/cmBadger/getProfileInfo.mustache"
       params='{"councilMemberId":{{cmId}}}'
       handleAs="json"
       withCredentials="true"
-      on-core-response="{{handleLobbyistResponse}}"></core-ajax>
+      on-core-response="{{handleProfileInfoResponse}}"></core-ajax>
 
     <!-- FLAGS -->
     <template id="caution-flag">
