@@ -88,13 +88,18 @@ fields' info.
       flag.tooltip += " - #{flag.LAST_UPDATED_BY}" if flag.LAST_UPDATED_BY
       flag.tooltip += " - #{flag.LAST_UPDATE_DATE_CALENDAR}" if flag.LAST_UPDATE_DATE_RAW
 
+In the midst of this, we special case the stinking update request flag so it
+knows where to send the user for edits.
+
+      flag.updateUrl = "https://vega.glgroup.com/Experts/vega/CouncilMember/Queue/UpdateRequests/Edit.aspx?memberID=#{@cmId}&cid=-1&sdate=1/1/0001&edate=1/1/0001&pgsize=100&pgno=1&sortby=10,8&sortAsc=1" if templateName is 'update-request'
+
       # Uncomment the following to enumerate current flags and template names.
       # console.log templateName, flag.ACTION, flag
       flag
 
 # The `glg-cm-badger` Element
 
-Doesn't do much besides respond to the `core-ajax` call and process the flags.
+Doesn't do much besides respond to the `core-ajax` calls and process the flags.
 
     Polymer 'glg-cm-badger',
       created: ->
@@ -112,7 +117,7 @@ Doesn't do much besides respond to the `core-ajax` call and process the flags.
         # TODO: Handle errors.
         # TODO: Sort by priority.
         @flags = filterInactive(flags)
-          .map(processFlag)
+          .map(processFlag.bind(@))
         anyExclusive(@flags)
 
       handleFeedbackResponse: (e, response) ->
