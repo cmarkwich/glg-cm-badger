@@ -128,7 +128,13 @@ Doesn't do much besides respond to the `core-ajax` calls and process the flags.
         list = reduceEpistreamResponse response
         @lobbyist = list[0]?.lobbyistInd
         @publicOfficial = list[0]?.publicOfficialInd
-        @bioScreenPass = list[0]?.bioScreenPass
+
+Why go negative here? This originally read `@bioScreenPass = ...` and the badge template was
+`<template if="{{!bioScreenPass}}>"`. That means that every CM showed a sometimes-not-so-quick
+flash of "Failed Screening" while waiting for the server response. No bueno.
+Now we do it like this to prevent that.
+
+        @bioScreenFailed = !list[0]?.bioScreenPass
         @bioScreenComments = list[0]?.bioScreenComments
 
       percentage: (value) ->
