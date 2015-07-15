@@ -5,17 +5,24 @@
     <template repeat="{{flag in flags}}">
       <template ref="{{flag.templateName}}" bind="{{flag}}"></template>
     </template>
+
     <template if="{{feedback.YES}}">
       <span class="icon-container feedback">
         <icon thumbs-o-up></icon>
         <span>{{feedback.YES / (feedback.YES + feedback.NO) | percentage}} ({{feedback.YES}}/{{feedback.YES + feedback.NO}})</span>
       </span>
     </template>
+
     <template if="{{lobbyist}}">
       <span class="lobbyist label">Lobbyist</span>
     </template>
+
     <template if="{{publicOfficial}}">
       <span class="label public-official">Public Official</span>
+    </template>
+
+    <template if="{{!bioScreenPass}}">
+      <span class="label bio-screen-fail" title="{{bioScreenComments}}">Failed Screening</span>
     </template>
 
     <core-ajax
