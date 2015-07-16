@@ -129,6 +129,16 @@ Doesn't do much besides respond to the `core-ajax` calls and process the flags.
         @lobbyist = list[0]?.lobbyistInd
         @publicOfficial = list[0]?.publicOfficialInd
 
+This is lifted directly from Advisors.
+
+        exclusivityDate = list[0]?.exclusivityDate
+        if exclusivityDate
+          expirationDate = moment(exclusivityDate).add(1, 'y')
+          today = moment().hours(0).minutes(0).seconds(0)
+          if expirationDate.isAfter(today)
+            @exclusiveToGlg = true
+            @exclusiveToGlgMessage = "Expires #{expirationDate.format('M/D/YYYY')}"
+
 Why go negative here? This originally read `@bioScreenPass = ...` and the badge template was
 `<template if="{{!bioScreenPass}}>"`. That means that every CM showed a sometimes-not-so-quick
 flash of "Failed Screening" while waiting for the server response. No bueno.

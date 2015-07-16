@@ -25,6 +25,10 @@
       <span class="label bio-screen-fail" title="{{bioScreenComments}}">Failed Screening</span>
     </template>
 
+    <template if="{{exclusiveToGlg}}">
+      <span class="label exclusive-to-glg" title="{{exclusiveToGlgMessage}}">Exclusive</span>
+    </template>
+
     <core-ajax
       auto
       url="https://services.glgresearch.com/repistream/79b6df0b-7665-4ae8-b61b-73d23ec04b3f/west_lsr_o/councilMember/profile/getFlagsActive.mustache"
