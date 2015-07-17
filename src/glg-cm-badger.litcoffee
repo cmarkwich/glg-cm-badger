@@ -128,6 +128,7 @@ Doesn't do much besides respond to the `core-ajax` calls and process the flags.
         list = reduceEpistreamResponse response
         @lobbyist = list[0]?.lobbyistInd
         @publicOfficial = list[0]?.publicOfficialInd
+        @highPotential = list[0]?.highValueInd
 
 This is lifted directly from Advisors.
 

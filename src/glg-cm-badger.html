@@ -29,6 +29,10 @@
       <span class="label exclusive-to-glg" title="{{exclusiveToGlgMessage}}">Exclusive</span>
     </template>
 
+    <template if="{{highPotential}}">
+      <span class="label high-potential" title="CM represents a high potential to be valuable to Clients">High Potential</span>
+    </template>
+
     <core-ajax
       auto
       url="https://services.glgresearch.com/repistream/79b6df0b-7665-4ae8-b61b-73d23ec04b3f/west_lsr_o/councilMember/profile/getFlagsActive.mustache"
@@ -172,12 +176,6 @@
     <template id="key-executive-flag">
       <span class="label key-executive" title="{{tooltip}}">
         Key Executive
-      </span>
-    </template>
-
-    <template id="high-potential-flag">
-      <span class="label high-potential" title="{{tooltip}}">
-        High Potential
       </span>
     </template>
 
