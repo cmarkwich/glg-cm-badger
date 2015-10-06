@@ -41,13 +41,13 @@ wrap them in a more useful `moment` object:
       'LAST_UPDATE_DATE'
     ]
 
-## `filterInactive`
+## `filterFlags`
 
-Removes flags where `ACTIVE_IND` is 0.
+Removes inactive flags or flags for update requests.
 
-    filterInactive = (flags) ->
+    filterFlags = (flags) ->
       return if not flags
-      flags.filter (flag) -> flag.ACTIVE_IND != 0
+      flags.filter (flag) -> flag.ACTIVE_IND != 0 && flag.FLAG_NAME != 'Update Request'
 
 ## `addExclusive`
 
@@ -116,7 +116,7 @@ Doesn't do much besides respond to the `core-ajax` calls and process the flags.
         flags = reduceEpistreamResponse response
         # TODO: Handle errors.
         # TODO: Sort by priority.
-        @flags = filterInactive(flags)
+        @flags = filterFlags(flags)
           .map(processFlag.bind(@))
         anyExclusive(@flags)
 
