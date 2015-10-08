@@ -11,6 +11,21 @@ We're gonna need some help parsing dates and getting data and stuff:
     moment = require('moment')
     reduce = require('lodash.reduce')
 
+# Attributes
+
+## cmId
+The council member ID that we're retrieving flags for.
+
+## ignore-flags
+Comma separated list of flags to ignore.  Must match the flag names.  For example,
+
+````
+    <glg-cm-badger
+      cmId="736890"
+      ignore-flags="Update Request, First Access">
+    </glg-cm-badger>
+````
+
 # Utility
 
 ## `reduceEpistreamResponse`
@@ -41,13 +56,14 @@ wrap them in a more useful `moment` object:
       'LAST_UPDATE_DATE'
     ]
 
-## `filterInactive`
+## `filterFlags`
 
-Removes flags where `ACTIVE_IND` is 0.
+Removes inactive flags or named flags.
 
-    filterInactive = (flags) ->
+    filterFlags = (flags, ignoreFlags) ->
       return if not flags
-      flags.filter (flag) -> flag.ACTIVE_IND != 0
+      flags.filter (flag) -> flag.ACTIVE_IND != 0 and not ignoreFlags[flag.FLAG_NAME]
+
 
 ## `addExclusive`
 
@@ -105,6 +121,11 @@ Doesn't do much besides respond to the `core-ajax` calls and process the flags.
       created: ->
 
       ready: ->
+        @ignoreFlags = {}
+        if @['ignore-flags']?.length
+          tokens = @['ignore-flags'].split ','
+          tokens.forEach (t) =>
+            @ignoreFlags[t.trim()] = true
 
       attached: ->
 
@@ -116,7 +137,7 @@ Doesn't do much besides respond to the `core-ajax` calls and process the flags.
         flags = reduceEpistreamResponse response
         # TODO: Handle errors.
         # TODO: Sort by priority.
-        @flags = filterInactive(flags)
+        @flags = filterFlags(flags, @ignoreFlags)
           .map(processFlag.bind(@))
         anyExclusive(@flags)
 
