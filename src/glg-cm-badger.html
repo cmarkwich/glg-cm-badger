@@ -2,6 +2,11 @@
 <polymer-element name="glg-cm-badger" attributes="cmId ignore-flags">
   <template>
     <link rel="stylesheet" type="text/css" href="./glg-cm-badger.less">
+
+    <template if="{{isLead}}">
+      <span class="label lead" title="{{leadTitle}}">Lead</span>
+    </template>
+
     <template repeat="{{flag in flags}}">
       <template ref="{{flag.templateName}}" bind="{{flag}}"></template>
     </template>

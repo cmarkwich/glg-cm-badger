@@ -147,9 +147,16 @@ Doesn't do much besides respond to the `core-ajax` calls and process the flags.
 
       handleProfileInfoResponse: (e, response) ->
         list = reduceEpistreamResponse response
-        @lobbyist = list[0]?.lobbyistInd
-        @publicOfficial = list[0]?.publicOfficialInd
-        @highPotential = list[0]?.highValueInd
+        profile = list[0]
+        return unless profile
+
+        @lobbyist = profile.lobbyistInd
+        @publicOfficial = profile.publicOfficialInd
+        @highPotential = profile.highValueInd
+        if profile.leadInd
+          @isLead = profile.leadInd
+          dateRecruited = moment(profile.dateRecruited).format('M/D/YYYY')
+          @leadTitle = "Recruited by #{profile.recruitedBy} on #{dateRecruited}"
 
 This is lifted directly from Advisors.
 
